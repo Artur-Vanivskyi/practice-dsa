@@ -118,18 +118,40 @@ function singleArray1(arrayOfArrays) {
 //console.log(singleArray1([[1,2], [3,4]]));
 
 // Return true if anagram and false if not
-function isAnagram(str1, str2){
-    //Sort the characters in string one and two
-    const sortedStr1 = str1.split('').sort().join('');
-    //console.log(sortedStr1)
-    const sortedStr2 = str2.split('').sort().join('');
-    return sortedStr1 === sortedStr2;
+function isAnagram(str1, str2) {
+  //Sort the characters in string one and two
+  const sortedStr1 = str1.split("").sort().join("");
+  //console.log(sortedStr1)
+  const sortedStr2 = str2.split("").sort().join("");
+  return sortedStr1 === sortedStr2;
 }
 
+// Change every letter of the string to the one that follows it and capitalize the vowels
+//Z should turn to A
 
+function letterChnages(string) {
+  const vowels = "aeiou"; //Define the vowels
+  let modifiedString = ""; // Create a variable to store the modified string
 
+  //Loop thru the string and modify each character
+  for (let char of string) {
+    let modifiedChar = char; // Initialize a variable to store the modified character
+    // Check if the character is a letter
+    if (char.match(/[a-z]/i)) {
+      //Shift the character to the next one in alphabet
+      modifiedChar = String.fromCharCode(char.charCodeAt(0) + 1);
 
+      //check if modified character is the vowel
+      if (vowels.includes(modifiedChar)) {
+        //Capitalized the modified character
+        modifiedChar = modifiedChar.toUpperCase();
+      }
+    }
+    // Add the modified character to the modified string
+    modifiedString += modifiedChar;
+  }
 
+  return modifiedString;
+}
 
-
-
+console.log(letterChnages("abc"));
